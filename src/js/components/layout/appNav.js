@@ -38,7 +38,7 @@ class AppNav extends LitElement{
         </a>
 
         <!-- offcanvas -->
-        <div class="offcanvas offcanvas-bottom bg-body-tertiary"  data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas offcanvas-bottom bg-body-tertiary show" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-body">
             <list-nav></list-nav>
           </div>

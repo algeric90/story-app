@@ -4,20 +4,51 @@ class storyCard extends LitElement{
   createRenderRoot() {
     return this;
   }
-  constructor(){
-    super();
+
+  static properties = {
+    id: { type: String, reflect: true },
+    name: { type: String },
+    description: { type: String },
+    photoUrl: { type: String },
+    createdAt: { type: String }
   };
 
-  static styles = css``;
+  constructor(){
+    super();
+    this.id = '';
+    this.name = '';
+    this.description = '';
+    this.photoUrl = '';
+    this.createdAt = '';
+  };
+
+  connectedCallback(){
+    this.classList.add('col-12','col-md-6');
+    super.connectedCallback();
+  }
+
+  _formatedDate(date){
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    }
+    return new Date(date).toLocaleDateString("id-ID", options)
+  }
+
   render(){
     return html`
-      <div class="card">
-        <div class="card-header">
-          <img src="img/logo.png" class="card-img-top" alt="...">
+      <div class="card h-100">
+        <div class="card-header p-0"> 
+          <img src="${this.photoUrl || 'https://placehold.co/400x250?text=No+Image'}" alt="${this.name}" class="card-img-top">
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+        <div class="card-body p-0">
+          <div class="bg-body-tertiary rounded-bottom-pill rounded-start-0 w-75 ps-3 py-2 pe-5">
+            <h6 class="card-title text-light text-capitalize text-truncate mb-0">${this.name}</h6>
+            <small class="fw-light "> ${this._formatedDate(this.createdAt)}</small>
+          </div>
+          <p class="card-text px-3 py-2">${this.description}</p>
         </div>
       </div>`;
   }

@@ -4,18 +4,23 @@ class dashboard extends LitElement{
   createRenderRoot(){
     return this;
   }
+  static properties = {
+    stories: { type: Array }
+  };
+
   constructor(){
     super();
+    this.stories = [];
   }
 
-  connectedCallback(){
-    super.connectedCallback();
-  }
 
   render(){
     return html`
         <h1 class="mb-2 mb-md-4">Dashboard</h1>
-        <stories-list></stories-list>
+        ${this.stories.length > 0
+          ? html`<stories-list .stories=${this.stories}></stories-list>`
+          : html`<p>⏳ Memuat cerita...</p>`
+        }
     `;
   }
 }

@@ -13,7 +13,7 @@ const htmlWebpackPluginConfig = {
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, 'src/js/index.js'),
+    app: path.resolve(__dirname, 'src/js/main.js'),
   },
   output: {
     filename: '[name].bundle.js',
