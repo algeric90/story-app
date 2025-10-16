@@ -21,6 +21,10 @@ class AppNav extends LitElement{
   render(){
     return html`
       <div class="container-md">
+        <a class="navbar-brand p-0" href="#">
+          <img src="${this.logoSrc}" alt="logo ${this.appName}" height="32">
+        </a>
+
         <button 
           class="navbar-toggler px-1" 
           type="button" 
@@ -31,21 +35,12 @@ class AppNav extends LitElement{
           >
           <span><i class="fa-solid fa-bars"></i></span>
         </button>
-      
-        <!-- logo -->
-        <a class="navbar-brand p-0" href="#">
-          <img src="${this.logoSrc || 'img/logo.png'}" alt="logo ${this.appName || 'App'}" height="32">
-        </a>
 
-        <!-- offcanvas -->
         <div class="offcanvas offcanvas-bottom bg-body-tertiary show" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-body">
+          <div class="offcanvas-body ms-md-auto">
             <list-nav></list-nav>
           </div>
         </div>
-
-        <!-- search -->
-        <i class="fa-solid fa-magnifying-glass"></i>
       </div>
     `;
   }

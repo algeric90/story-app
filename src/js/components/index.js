@@ -4,6 +4,3 @@ import './dashboard/appHome.js';
 import './dashboard/storiesList.js';
 import './dashboard/storyCard.js';
 import './add/appAdd.js';
-import './add/storyForm.js';
-import './profile/appProfile.js';
-import './profile/profileCard.js';

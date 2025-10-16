@@ -23,17 +23,17 @@ class storiesList extends LitElement{
   render(){
     return html`
       <div class="row g-3 g-md-4 g-lg-5">
-      ${this.stories.map(
-        (story) => html`
-          <story-card
-            .id=${story.id}
-            .name=${story.name}
-            .description=${story.description}
-            .photoUrl=${story.photoUrl}
-            .createdAt=${story.createdAt}
-          ></story-card>
-        `
-      )}
+        ${this.stories.map(
+          (story) => html`
+            <story-card
+              .id=${story.id}
+              .name=${story.name}
+              .description=${story.description}
+              .photoUrl=${story.photoUrl}
+              .createdAt=${story.createdAt}
+            ></story-card>
+          `
+        )}
       </div>
     `;
   }

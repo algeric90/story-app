@@ -23,7 +23,7 @@ class storyCard extends LitElement{
   };
 
   connectedCallback(){
-    this.classList.add('col-12','col-md-6');
+    this.classList.add('col-12','col-md-6', 'col-lg-4');
     super.connectedCallback();
   }
 
@@ -40,7 +40,7 @@ class storyCard extends LitElement{
   render(){
     return html`
       <div class="card h-100">
-        <div class="card-header p-0"> 
+        <div class="card-header p-0 ratio ratio-16x9"> 
           <img src="${this.photoUrl || 'https://placehold.co/400x250?text=No+Image'}" alt="${this.name}" class="card-img-top">
         </div>
         <div class="card-body p-0">

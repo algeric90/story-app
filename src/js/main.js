@@ -2,7 +2,7 @@ import '../scss/main.scss';
 import "./components/index";
 import * as bootstrap from "bootstrap";
 
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 
 class app extends LitElement {
   createRenderRoot() {
@@ -11,13 +11,10 @@ class app extends LitElement {
 
   constructor() {
     super();
-    this.dataStories = [];
   }
-  
 
   connectedCallback() {
     super.connectedCallback();
-    this._initialData();
     window.addEventListener('resize', this._adjustLayout);
   }
   disconnectedCallback() {
@@ -26,6 +23,13 @@ class app extends LitElement {
   }
   firstUpdated() {
     this._adjustLayout();
+    const slotContent = this.querySelector('[slot="main-content"]');
+    const slotElement = this.querySelector('slot')
+    const main = this.querySelector('main');
+    if (slotContent && main) {
+      main.appendChild(slotContent);
+      slotElement.remove();
+    }
   }
   _adjustLayout() {
     const header = document.querySelector('header');
@@ -35,28 +39,14 @@ class app extends LitElement {
       main.style.minHeight = `calc(100vh -${header.clientHeight}px)`;
     }
   }
-  async _initialData() {
-    try {
-      const response = await fetch('/data/data.json');
-      const data = await response.json();
-      this.dataStories = data.listStory;
-      this.requestUpdate();
-    }catch (error) {
-      console.error('Error fetching data:', error);
-      return null;
-    }
-  }
-
-
+  
   render(){
     return html`
       <header>
-        <app-nav logoSrc="img/logo.png" appName="Story App"></app-nav>
+        <app-nav logoSrc="../img/logo.png" appName="Story App"></app-nav>
       </header>
-      <main id="main-content">
-        <div class="container-md py-3 py-md-5">
-          <app-home .stories=${this.dataStories}></app-home>
-        </div>
+      <main class="container-md py-3 py-md-5" id="main-content">
+        <slot name="main-content"></slot>
       </main>
     `;
   }
